@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Your Spot</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #0f0f0f;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input, select {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background: purple;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#spots {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.spot {
+    width: 200px;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌌 Create Your Spot</h1>
+
+<input type="text" id="nameInput" placeholder="Enter your spot name">
+<select id="colorSelect">
+    <option value="purple">Purple</option>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+</select>
+
+<br>
+
+<button onclick="createSpot()">Create Spot</button>
+
+<div id="spots"></div>
+
+<script>
+function createSpot() {
+    const name = document.getElementById("nameInput").value;
+    const color = document.getElementById("colorSelect").value;
+
+    if (name.trim() === "") {
+        alert("Enter a name first!");
+        return;
+    }
+
+    const spot = document.createElement("div");
+    spot.className = "spot";
+    spot.style.background = color;
+    spot.textContent = name;
+
+    document.getElementById("spots").appendChild(spot);
+
+    document.getElementById("nameInput").value = "";
+}
+</script>
+
+</body>
+</html>
